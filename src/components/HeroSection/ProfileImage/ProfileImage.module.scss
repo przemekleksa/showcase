@@ -27,48 +27,11 @@
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
-.placeholderImage {
+.profileImg {
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.face {
-  width: 80px;
-  height: 100px;
-  position: relative;
-}
-
-.eyes {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 20px;
-}
-
-.eye {
-  width: 12px;
-  height: 12px;
-  background: #374151;
+  object-fit: cover;
   border-radius: 50%;
-}
-
-.nose {
-  width: 8px;
-  height: 8px;
-  background: #6b7280;
-  border-radius: 50%;
-  margin: 0 auto 15px;
-}
-
-.mouth {
-  width: 20px;
-  height: 8px;
-  background: #374151;
-  border-radius: 0 0 20px 20px;
-  margin: 0 auto;
 }
 
 .decorativeElements {

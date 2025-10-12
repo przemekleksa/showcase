@@ -3,9 +3,12 @@ export type Language = 'pl' | 'en';
 export interface Translations {
   topBar: {
     logoText: string;
-    pricing: string;
-    newsletter: string;
-    scheduleCall: string;
+    hero: string;
+    projects: string;
+    impact: string;
+    skills: string;
+    about: string;
+    contact: string;
   };
   hero: {
     headline: string;
@@ -21,9 +24,12 @@ export const translations: Record<Language, Translations> = {
   pl: {
     topBar: {
       logoText: 'Przemysław Leksa',
-      pricing: 'Cennik',
-      newsletter: 'Newsletter',
-      scheduleCall: 'Umów Rozmowę',
+      hero: 'Start',
+      projects: 'Projekty',
+      impact: 'Wpływ',
+      skills: 'Umiejętności',
+      about: 'O mnie',
+      contact: 'Kontakt',
     },
     hero: {
       headline: 'End‑to‑end Frontend. Płatności. Skalowalność.',
@@ -38,9 +44,12 @@ export const translations: Record<Language, Translations> = {
   en: {
     topBar: {
       logoText: 'Przemysław Leksa',
-      pricing: 'Pricing',
-      newsletter: 'Newsletter',
-      scheduleCall: 'Schedule A Call',
+      hero: 'Home',
+      projects: 'Projects',
+      impact: 'Impact',
+      skills: 'Skills',
+      about: 'About',
+      contact: 'Contact',
     },
     hero: {
       headline: 'End‑to‑end Frontend. Payments. Scale.',
