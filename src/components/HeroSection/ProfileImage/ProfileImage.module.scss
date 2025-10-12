@@ -1,8 +1,8 @@
 .profileContainer {
   position: relative;
   flex: 0 0 auto;
-  width: 300px;
-  height: 300px;
+  width: 450px;
+  height: 450px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -10,8 +10,8 @@
 
 .imageWrapper {
   position: relative;
-  width: 200px;
-  height: 200px;
+  width: 300px;
+  height: 300px;
   z-index: 2;
 }
 
@@ -47,9 +47,9 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 280px;
-  height: 280px;
-  border: 2px solid rgba(255, 255, 255, 0.3);
+  width: 420px;
+  height: 420px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
   border-radius: 50%;
   transform: translate(-50%, -50%);
   animation: rotate 20s linear infinite;
@@ -59,9 +59,9 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 320px;
-  height: 320px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: 480px;
+  height: 480px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
   border-radius: 50%;
   transform: translate(-50%, -50%);
   animation: rotate 30s linear infinite reverse;
@@ -71,8 +71,8 @@
 .star2,
 .star3 {
   position: absolute;
-  width: 8px;
-  height: 8px;
+  width: 12px;
+  height: 12px;
   background: white;
   border-radius: 50%;
   animation: twinkle 3s ease-in-out infinite;
@@ -105,16 +105,16 @@
 }
 
 .circle1 {
-  width: 12px;
-  height: 12px;
+  width: 18px;
+  height: 18px;
   top: 30%;
   right: 10%;
   animation-delay: 0.5s;
 }
 
 .circle2 {
-  width: 6px;
-  height: 6px;
+  width: 9px;
+  height: 9px;
   bottom: 40%;
   right: 20%;
   animation-delay: 1.5s;
@@ -153,22 +153,22 @@
 
 @media (max-width: 768px) {
   .profileContainer {
-    width: 250px;
-    height: 250px;
+    width: 375px;
+    height: 375px;
   }
 
   .imageWrapper {
-    width: 180px;
-    height: 180px;
+    width: 270px;
+    height: 270px;
   }
 
   .orbit1 {
-    width: 240px;
-    height: 240px;
+    width: 360px;
+    height: 360px;
   }
 
   .orbit2 {
-    width: 270px;
-    height: 270px;
+    width: 405px;
+    height: 405px;
   }
 }
