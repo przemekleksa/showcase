@@ -1,9 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useLanguage } from '../../../contexts/LanguageContext';
+import { useTheme } from '../../../contexts/ThemeContext';
 import styles from './TopBar.module.scss';
 
 const TopBar = () => {
   const { language, setLanguage, t } = useLanguage();
+  const { theme, toggleTheme } = useTheme();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleLanguage = () => {
@@ -14,8 +16,27 @@ const TopBar = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const closeMenu = () => {
+  const closeMenu = useCallback(() => {
     setIsMenuOpen(false);
+  }, []);
+
+  const handleNavClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string
+  ) => {
+    e.preventDefault();
+    const element = document.querySelector(href);
+    if (element) {
+      const topbarHeight = 80; // Approximate height of fixed topbar
+      const elementPosition =
+        element.getBoundingClientRect().top + window.pageYOffset;
+      const offsetPosition = elementPosition - topbarHeight;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth',
+      });
+    }
   };
 
   const handleOverlayClick = (e: React.MouseEvent) => {
@@ -40,14 +61,12 @@ const TopBar = () => {
       return () => {
         document.removeEventListener('keydown', handleEscape);
       };
-    } else {
-      document.body.style.overflow = 'unset';
     }
 
     return () => {
       document.body.style.overflow = 'unset';
     };
-  }, [isMenuOpen]);
+  }, [isMenuOpen, closeMenu]);
 
   return (
     <>
@@ -60,19 +79,39 @@ const TopBar = () => {
 
           {/* Desktop Navigation */}
           <nav className={styles.desktopNavigation}>
-            <a href="#hero" className={styles.navLink}>
+            <a
+              href="#hero"
+              className={styles.navLink}
+              onClick={(e) => handleNavClick(e, '#hero')}
+            >
               {t.topBar.hero}
             </a>
-            <a href="#projects" className={styles.navLink}>
+            <a
+              href="#projects"
+              className={styles.navLink}
+              onClick={(e) => handleNavClick(e, '#projects')}
+            >
               {t.topBar.projects}
             </a>
-            <a href="#impact" className={styles.navLink}>
+            <a
+              href="#impact"
+              className={styles.navLink}
+              onClick={(e) => handleNavClick(e, '#impact')}
+            >
               {t.topBar.impact}
             </a>
-            <a href="#skills" className={styles.navLink}>
+            <a
+              href="#skills"
+              className={styles.navLink}
+              onClick={(e) => handleNavClick(e, '#skills')}
+            >
               {t.topBar.skills}
             </a>
-            <a href="#about" className={styles.navLink}>
+            <a
+              href="#about"
+              className={styles.navLink}
+              onClick={(e) => handleNavClick(e, '#about')}
+            >
               {t.topBar.about}
             </a>
             <button type="button" className={styles.navButton}>
@@ -85,6 +124,18 @@ const TopBar = () => {
               title={t.common.language}
             >
               {language === 'pl' ? 'EN' : 'PL'}
+            </button>
+            <button
+              type="button"
+              className={styles.themeButton}
+              onClick={toggleTheme}
+              title={
+                theme === 'light'
+                  ? 'Switch to dark mode'
+                  : 'Switch to light mode'
+              }
+            >
+              {theme === 'light' ? '🌙' : '☀️'}
             </button>
           </nav>
 
@@ -125,31 +176,54 @@ const TopBar = () => {
         </button>
 
         <nav className={styles.mobileNavigation}>
-          <a href="#hero" className={styles.mobileNavLink} onClick={closeMenu}>
+          <a
+            href="#hero"
+            className={styles.mobileNavLink}
+            onClick={(e) => {
+              handleNavClick(e, '#hero');
+              closeMenu();
+            }}
+          >
             {t.topBar.hero}
           </a>
           <a
             href="#projects"
             className={styles.mobileNavLink}
-            onClick={closeMenu}
+            onClick={(e) => {
+              handleNavClick(e, '#projects');
+              closeMenu();
+            }}
           >
             {t.topBar.projects}
           </a>
           <a
             href="#impact"
             className={styles.mobileNavLink}
-            onClick={closeMenu}
+            onClick={(e) => {
+              handleNavClick(e, '#impact');
+              closeMenu();
+            }}
           >
             {t.topBar.impact}
           </a>
           <a
             href="#skills"
             className={styles.mobileNavLink}
-            onClick={closeMenu}
+            onClick={(e) => {
+              handleNavClick(e, '#skills');
+              closeMenu();
+            }}
           >
             {t.topBar.skills}
           </a>
-          <a href="#about" className={styles.mobileNavLink} onClick={closeMenu}>
+          <a
+            href="#about"
+            className={styles.mobileNavLink}
+            onClick={(e) => {
+              handleNavClick(e, '#about');
+              closeMenu();
+            }}
+          >
             {t.topBar.about}
           </a>
           <button
@@ -159,16 +233,32 @@ const TopBar = () => {
           >
             {t.topBar.contact}
           </button>
-          <button
-            type="button"
-            className={styles.mobileLanguageButton}
-            onClick={() => {
-              toggleLanguage();
-            }}
-            title={t.common.language}
-          >
-            {language === 'pl' ? 'EN' : 'PL'}
-          </button>
+          <div className={styles.mobileLanguageThemeContainer}>
+            <button
+              type="button"
+              className={styles.mobileLanguageButton}
+              onClick={() => {
+                toggleLanguage();
+              }}
+              title={t.common.language}
+            >
+              {language === 'pl' ? 'EN' : 'PL'}
+            </button>
+            <button
+              type="button"
+              className={styles.mobileThemeButton}
+              onClick={() => {
+                toggleTheme();
+              }}
+              title={
+                theme === 'light'
+                  ? 'Switch to dark mode'
+                  : 'Switch to light mode'
+              }
+            >
+              {theme === 'light' ? '🌙' : '☀️'}
+            </button>
+          </div>
         </nav>
       </div>
     </>

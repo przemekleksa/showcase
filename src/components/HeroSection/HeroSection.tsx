@@ -7,7 +7,7 @@ const HeroSection = () => {
   const { t } = useLanguage();
 
   return (
-    <section className={styles.heroSection}>
+    <section id="hero" className={styles.heroSection}>
       <TopBar />
       <div className={styles.content}>
         <div className={styles.textContent}>
