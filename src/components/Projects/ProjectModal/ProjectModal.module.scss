@@ -55,6 +55,13 @@
   }
 }
 
+@media (max-width: 768px) {
+  .closeButton {
+    top: 6px;
+    right: 6px;
+  }
+}
+
 .closeLine {
   position: absolute;
   width: 20px;
@@ -221,7 +228,8 @@
 }
 
 .liveLink,
-.githubLink {
+.githubLink,
+.appStoreLink {
   padding: 0.75rem 1.5rem;
   border-radius: 8px;
   font-weight: 600;
@@ -229,6 +237,7 @@
   transition: all 0.3s ease;
   display: inline-flex;
   align-items: center;
+  gap: 0.5rem;
 }
 
 .liveLink {
@@ -250,6 +259,22 @@
     background: var(--bg-secondary);
     transform: translateY(-2px);
   }
+}
+
+.appStoreLink {
+  background: #007aff;
+  color: white;
+  border: 2px solid #007aff;
+
+  &:hover {
+    background: #0056cc;
+    border-color: #0056cc;
+    transform: translateY(-2px);
+  }
+}
+
+.appStoreIcon {
+  font-size: 1.1rem;
 }
 
 /* Dark theme styles */
@@ -279,10 +304,18 @@
 @media (max-width: 768px) {
   .modalOverlay {
     padding: 1rem;
+    max-height: 100vh;
   }
 
   .modalContent {
-    max-height: 95vh;
+    max-height: 80vh;
+    /* Hide scrollbar on mobile */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+
+    &::-webkit-scrollbar {
+      display: none; /* Chrome, Safari, Opera */
+    }
   }
 
   .modalBody {
@@ -302,7 +335,8 @@
   }
 
   .liveLink,
-  .githubLink {
+  .githubLink,
+  .appStoreLink {
     text-align: center;
     justify-content: center;
   }

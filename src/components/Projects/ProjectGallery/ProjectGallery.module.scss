@@ -13,6 +13,10 @@
   position: relative;
   cursor: pointer;
   overflow: hidden;
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
 }
 
 .image {
@@ -69,7 +73,11 @@
   color: white;
   font-size: 1.5rem;
   cursor: pointer;
-  padding: 0.25rem 0.5rem;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 50%;
   transition: background-color 0.3s ease;
 
@@ -118,6 +126,8 @@
   align-items: center;
   justify-content: center;
   padding: 2rem;
+  border: none;
+  cursor: pointer;
 }
 
 .fullscreenContent {
@@ -240,6 +250,8 @@
 
   .navButton {
     font-size: 1.25rem;
+    width: 28px;
+    height: 28px;
   }
 
   .dot {

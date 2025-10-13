@@ -10,7 +10,7 @@ import { Language, translations } from '../i18n/translations';
 interface LanguageContextType {
   language: Language;
   setLanguage: (lang: Language) => void;
-  t: typeof translations.pl;
+  t: typeof translations.en;
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(
@@ -26,7 +26,7 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({
 }) => {
   const [language, setLanguage] = useState<Language>(() => {
     const saved = localStorage.getItem('portfolio-language') as Language;
-    return saved || 'pl';
+    return saved || 'en';
   });
 
   useEffect(() => {

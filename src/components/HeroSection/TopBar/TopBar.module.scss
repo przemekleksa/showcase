@@ -62,11 +62,20 @@
   color: white;
   letter-spacing: -0.5px;
   transition: color 0.3s ease;
+  text-decoration: none;
+}
+
+.logoText:hover {
+  color: #358ed7;
 }
 
 /* Light theme text colors */
 [data-theme='light'] .logoText {
   color: #163853;
+}
+
+[data-theme='light'] .logoText:hover {
+  color: #358ed7;
 }
 
 [data-theme='light'] .navLink {
@@ -270,8 +279,9 @@
 /* Close Button inside overlay */
 .closeButton {
   position: absolute;
-  top: 22px;
-  right: 1rem;
+  top: 20px;
+  right: 20px;
+  // right: 1rem;
   width: 30px;
   height: 30px;
   background: transparent;
@@ -417,24 +427,16 @@
 }
 
 @media (max-width: 768px) {
-  .container {
-    padding: 0 1rem;
-  }
-
-  .desktopNavigation {
-    display: none;
+  .topBar {
+    display: none; /* Ukryj cały topbar na mobile */
   }
 
   .hamburger {
     display: flex;
-  }
-
-  .mobileMenuOverlay {
-    display: flex;
-  }
-
-  .logoText {
-    font-size: 1.1rem;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1001;
   }
 }
 
