@@ -60,12 +60,11 @@ const TopBar = () => {
 
       return () => {
         document.removeEventListener('keydown', handleEscape);
+        document.body.style.overflow = 'unset';
       };
     }
 
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
+    document.body.style.overflow = 'unset';
   }, [isMenuOpen, closeMenu]);
 
   return (
@@ -74,31 +73,23 @@ const TopBar = () => {
         <div className={styles.container}>
           <div className={styles.logo}>
             <div className={styles.logoIcon}>PL</div>
-            <span className={styles.logoText}>{t.topBar.logoText}</span>
+            <a
+              href="#hero"
+              className={styles.logoText}
+              onClick={(e) => handleNavClick(e, '#hero')}
+            >
+              {t.topBar.logoText}
+            </a>
           </div>
 
           {/* Desktop Navigation */}
           <nav className={styles.desktopNavigation}>
-            <a
-              href="#hero"
-              className={styles.navLink}
-              onClick={(e) => handleNavClick(e, '#hero')}
-            >
-              {t.topBar.hero}
-            </a>
             <a
               href="#projects"
               className={styles.navLink}
               onClick={(e) => handleNavClick(e, '#projects')}
             >
               {t.topBar.projects}
-            </a>
-            <a
-              href="#impact"
-              className={styles.navLink}
-              onClick={(e) => handleNavClick(e, '#impact')}
-            >
-              {t.topBar.impact}
             </a>
             <a
               href="#skills"
@@ -114,9 +105,27 @@ const TopBar = () => {
             >
               {t.topBar.about}
             </a>
-            <button type="button" className={styles.navButton}>
+            <a
+              href="#courses"
+              className={styles.navLink}
+              onClick={(e) => handleNavClick(e, '#courses')}
+            >
+              {t.topBar.courses}
+            </a>
+            <a
+              href="#languages"
+              className={styles.navLink}
+              onClick={(e) => handleNavClick(e, '#languages')}
+            >
+              {t.topBar.languages}
+            </a>
+            <a
+              href="#contact"
+              className={styles.navLink}
+              onClick={(e) => handleNavClick(e, '#contact')}
+            >
               {t.topBar.contact}
-            </button>
+            </a>
             <button
               type="button"
               className={styles.languageButton}
@@ -138,22 +147,28 @@ const TopBar = () => {
               {theme === 'light' ? '🌙' : '☀️'}
             </button>
           </nav>
-
-          {/* Mobile Hamburger Button */}
-          <button
-            type="button"
-            className={`${styles.hamburger} ${
-              isMenuOpen ? styles.hamburgerOpen : ''
-            }`}
-            onClick={toggleMenu}
-            aria-label="Toggle menu"
-          >
-            <span className={styles.hamburgerLine} />
-            <span className={styles.hamburgerLine} />
-            <span className={styles.hamburgerLine} />
-          </button>
         </div>
       </header>
+
+      {/* Mobile Hamburger Button - Outside of header */}
+      <button
+        type="button"
+        className={`${styles.hamburger} ${
+          isMenuOpen ? styles.hamburgerOpen : ''
+        }`}
+        onClick={toggleMenu}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            toggleMenu();
+          }
+        }}
+        aria-label="Toggle menu"
+      >
+        <span className={styles.hamburgerLine} />
+        <span className={styles.hamburgerLine} />
+        <span className={styles.hamburgerLine} />
+      </button>
 
       {/* Mobile Menu Overlay - Outside of header */}
       <div
@@ -169,6 +184,12 @@ const TopBar = () => {
             isMenuOpen ? styles.closeButtonVisible : ''
           }`}
           onClick={closeMenu}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              closeMenu();
+            }
+          }}
           aria-label="Close menu"
         >
           <span className={styles.closeLine} />
@@ -197,16 +218,6 @@ const TopBar = () => {
             {t.topBar.projects}
           </a>
           <a
-            href="#impact"
-            className={styles.mobileNavLink}
-            onClick={(e) => {
-              handleNavClick(e, '#impact');
-              closeMenu();
-            }}
-          >
-            {t.topBar.impact}
-          </a>
-          <a
             href="#skills"
             className={styles.mobileNavLink}
             onClick={(e) => {
@@ -226,13 +237,36 @@ const TopBar = () => {
           >
             {t.topBar.about}
           </a>
-          <button
-            type="button"
-            className={styles.mobileNavButton}
-            onClick={closeMenu}
+          <a
+            href="#courses"
+            className={styles.mobileNavLink}
+            onClick={(e) => {
+              handleNavClick(e, '#courses');
+              closeMenu();
+            }}
+          >
+            {t.topBar.courses}
+          </a>
+          <a
+            href="#languages"
+            className={styles.mobileNavLink}
+            onClick={(e) => {
+              handleNavClick(e, '#languages');
+              closeMenu();
+            }}
+          >
+            {t.topBar.languages}
+          </a>
+          <a
+            href="#contact"
+            className={styles.mobileNavLink}
+            onClick={(e) => {
+              handleNavClick(e, '#contact');
+              closeMenu();
+            }}
           >
             {t.topBar.contact}
-          </button>
+          </a>
           <div className={styles.mobileLanguageThemeContainer}>
             <button
               type="button"
