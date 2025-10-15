@@ -79,8 +79,9 @@ export const projects: Project[] = [
         'Obecnie ma 200,000+ miesięcznych wyświetleń i 55,000 aktywnych użytkowników',
       ],
     },
-    liveUrl: 'https://kitopay.com',
-    githubUrl: 'https://github.com/kitopay',
+    liveUrl:
+      'https://pay.kitopi.com/?outletId=d846085a-d7ef-44e9-9697-f3752f14c525&brandId=242d0854-6203-4226-99cd-562c53240319&tableNumber=1',
+    githubUrl: '',
     githubHidden: true,
   },
   {
@@ -181,6 +182,7 @@ export const projects: Project[] = [
       ],
     },
     liveUrl: 'https://kitopi.com',
+    appStoreUrl: 'https://apps.apple.com/us/app/kitopi/id1615524979',
     githubHidden: true,
   },
   {
@@ -198,7 +200,7 @@ export const projects: Project[] = [
       en: 'Developed a multi-brand meal aggregator web app, allowing customers to select meals from various brands and pay a single delivery fee across them. Designed the app to support multi-tenant architecture, enabling each tenant to sell its own products and/or products from associated brands. Played a key role in building the SKOSWeb CMS app, where staff can create and configure tenants, manage banners, brands, menus, playlists, tags, categories, cashback values, and more.',
       pl: 'Opracowałem aplikację webową agregatora posiłków multi-brand, umożliwiającą klientom wybór posiłków z różnych marek i płacenie jednej opłaty za dostawę za wszystkie. Zaprojektowałem aplikację do obsługi architektury multi-tenant, umożliwiając każdemu najemcy sprzedaż własnych produktów i/lub produktów z powiązanych marek. Odegrałem kluczową rolę w budowaniu aplikacji SKOSWeb CMS, gdzie personel może tworzyć i konfigurować najemców, zarządzać banerami, markami, menu, playlistami, tagami, kategoriami, wartościami cashback i więcej.',
     },
-
+    screenshots: [`${basePath}/images/projects/skosweb/main.jpg`],
     technologies: ['React', 'Redux', 'Jest', 'Cypress', 'Material-UI'],
     achievements: {
       en: [
@@ -214,7 +216,6 @@ export const projects: Project[] = [
         'Umożliwiono jedną opłatę za dostawę za wiele marek',
       ],
     },
-    liveUrl: 'https://skosweb.com',
     githubHidden: true,
   },
   {
