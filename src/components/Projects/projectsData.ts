@@ -216,7 +216,6 @@ export const projects: Project[] = [
         'Umożliwiono jedną opłatę za dostawę za wiele marek',
       ],
     },
-    liveUrl: 'https://skosweb.com',
     githubHidden: true,
   },
   {
