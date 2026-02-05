@@ -11,17 +11,13 @@
   width: 100%;
   text-align: left;
   padding: 0;
-  position: relative; // Ensure it acts as positioning context for overlay
+  position: relative;
 
   &:hover {
     transform: translateY(-4px);
     box-shadow: 0 8px 25px var(--shadow);
   }
 }
-
-// ... existing code ...
-
-
 
 .screenshot {
   width: 100%;
@@ -161,11 +157,3 @@
 [data-theme='dark'] .hintText {
   color: var(--text-secondary);
 }
-
-// .hintText {
-//   color: white;
-//   font-size: 1.25rem;
-//   font-weight: 600;
-//   text-align: center;
-//   padding: 1rem;
-// }

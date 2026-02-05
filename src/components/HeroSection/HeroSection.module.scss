@@ -15,7 +15,6 @@
   z-index: 1;
   display: flex;
   align-items: flex-start;
-  // padding-top: 1rem;
 }
 
 @media (min-width: 768px) {
@@ -157,14 +156,14 @@
     text-align: center;
     padding: 4rem 1rem 2rem;
     gap: 2rem;
-    justify-content: center; // Center content vertically
-    min-height: 100vh; // Full viewport height
-    align-items: center; // Center horizontally
+    justify-content: center;
+    min-height: 100vh;
+    align-items: center;
   }
 
   .textContent {
-    max-width: 100%; // Full width on mobile
-    text-align: center; // Ensure text is centered
+    max-width: 100%;
+    text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -172,8 +171,8 @@
   }
 
   .nameContainer {
-    padding-top: 0; // Remove top padding for better centering
-    margin-bottom: 2rem; // Reduce margin
+    padding-top: 0;
+    margin-bottom: 2rem;
   }
 
   .name {
@@ -183,12 +182,12 @@
 
   .headline {
     font-size: 1.5rem;
-    margin-top: 1rem; // Reduce top margin
+    margin-top: 1rem;
   }
 
   .subheadline {
     font-size: 1.25rem;
-    margin-top: 1rem; // Reduce top margin
+    margin-top: 1rem;
   }
 
   .description {

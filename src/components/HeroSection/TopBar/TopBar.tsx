@@ -25,7 +25,7 @@ const TopBar = () => {
     e.preventDefault()
     const element = document.querySelector(href)
     if (element) {
-      const topbarHeight = 80 // Approximate height of fixed topbar
+      const topbarHeight = 80
       const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
       const offsetPosition = elementPosition - topbarHeight
 

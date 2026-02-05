@@ -14,7 +14,6 @@ const Projects: React.FC = () => {
   const [isHinting, setIsHinting] = useState(false)
   const [showSubtitle, setShowSubtitle] = useState(false)
 
-  // Ref for the projects section to trigger animation
   const sectionRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
@@ -23,14 +22,10 @@ const Projects: React.FC = () => {
     const observer = new IntersectionObserver(
       (entries) => {
         const [entry] = entries
-        // Trigger when at least 30% of the section is visible
         if (entry.isIntersecting) {
           setHasAnimated(true)
-
-          // Start hinting animation
           setIsHinting(true)
 
-          // End animation after 2 seconds and show subtitle
           setTimeout(() => {
             setIsHinting(false)
             setShowSubtitle(true)

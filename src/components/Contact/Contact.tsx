@@ -44,7 +44,7 @@ const Contact: React.FC = () => {
       value: 'linkedin.com/in/pleksa',
       link: 'https://linkedin.com/in/pleksa',
       canCopy: true,
-      copyValue: 'https://linkedin.com/in/pleksa', // Explicit value to copy for LinkedIn
+      copyValue: 'https://linkedin.com/in/pleksa',
     },
   ]
 
