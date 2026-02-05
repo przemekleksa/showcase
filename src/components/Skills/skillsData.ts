@@ -1,8 +1,8 @@
 export interface SkillCategory {
-  id: string;
-  name: string;
-  skills: string[];
-  icon: string;
+  id: string
+  name: string
+  skills: string[]
+  icon: string
 }
 
 export const skillsData: SkillCategory[] = [
@@ -43,15 +43,7 @@ export const skillsData: SkillCategory[] = [
   {
     id: 'ai',
     name: 'ai',
-    skills: [
-      'Cursor',
-      'Kiro',
-      'GitHub Copilot',
-      'Gemini CLI',
-      'ChatGPT',
-      'Perplexity',
-      'Granola',
-    ],
+    skills: ['Cursor', 'Kiro', 'GitHub Copilot', 'Gemini CLI', 'ChatGPT', 'Perplexity', 'Granola'],
     icon: '🤖',
   },
   {
@@ -69,17 +61,7 @@ export const skillsData: SkillCategory[] = [
   {
     id: 'other',
     name: 'other',
-    skills: [
-      'Git',
-      'GitLab',
-      'GitHub',
-      'CI/CD',
-      'Sentry',
-      'Jira',
-      'Swagger',
-      'SEO',
-      'BitBucket',
-    ],
+    skills: ['Git', 'GitLab', 'GitHub', 'CI/CD', 'Sentry', 'Jira', 'Swagger', 'SEO', 'BitBucket'],
     icon: '🛠️',
   },
-];
+]

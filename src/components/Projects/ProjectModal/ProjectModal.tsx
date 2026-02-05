@@ -1,16 +1,16 @@
-import type React from 'react';
-import { useEffect, useRef, useState } from 'react';
-import { useLanguage } from '../../../contexts/LanguageContext';
-import ProjectGallery from '../ProjectGallery/ProjectGallery';
-import type { Project } from '../projectsData';
-import styles from './ProjectModal.module.scss';
+import type React from 'react'
+import { useEffect, useRef, useState } from 'react'
+import { useLanguage } from '../../../contexts/LanguageContext'
+import ProjectGallery from '../ProjectGallery/ProjectGallery'
+import type { Project } from '../projectsData'
+import styles from './ProjectModal.module.scss'
 
 interface ProjectModalProps {
-  project: Project;
-  isOpen: boolean;
-  onClose: () => void;
-  onNext: () => void;
-  onPrevious: () => void;
+  project: Project
+  isOpen: boolean
+  onClose: () => void
+  onNext: () => void
+  onPrevious: () => void
 }
 
 const ProjectModal: React.FC<ProjectModalProps> = ({
@@ -20,107 +20,103 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
   onNext,
   onPrevious,
 }) => {
-  const { t, language } = useLanguage();
-  const modalRef = useRef<HTMLDivElement>(null);
-  const [touchStart, setTouchStart] = useState<{ x: number; y: number } | null>(
-    null
-  );
-  const [touchEnd, setTouchEnd] = useState<{ x: number; y: number } | null>(
-    null
-  );
+  const { t, language } = useLanguage()
+  const modalRef = useRef<HTMLDivElement>(null)
+  const [touchStart, setTouchStart] = useState<{ x: number; y: number } | null>(null)
+  const [touchEnd, setTouchEnd] = useState<{ x: number; y: number } | null>(null)
 
   // Minimum distance for swipe detection - very low for instant response
-  const minSwipeDistance = 10;
+  const minSwipeDistance = 10
 
   useEffect(() => {
     if (isOpen) {
       // Store current scroll position
-      const scrollY = window.scrollY;
+      const scrollY = window.scrollY
 
       // Block body scroll
-      document.body.style.overflow = 'hidden';
-      document.body.style.position = 'fixed';
-      document.body.style.top = `-${scrollY}px`;
-      document.body.style.width = '100%';
+      document.body.style.overflow = 'hidden'
+      document.body.style.position = 'fixed'
+      document.body.style.top = `-${scrollY}px`
+      document.body.style.width = '100%'
 
       return () => {
         // Restore scroll position and body styles
-        document.body.style.overflow = 'unset';
-        document.body.style.position = '';
-        document.body.style.top = '';
-        document.body.style.width = '';
-        window.scrollTo(0, scrollY);
-      };
+        document.body.style.overflow = 'unset'
+        document.body.style.position = ''
+        document.body.style.top = ''
+        document.body.style.width = ''
+        window.scrollTo(0, scrollY)
+      }
     }
 
     // Ensure body is scrollable when modal is closed
-    document.body.style.overflow = 'unset';
-    document.body.style.position = '';
-    document.body.style.top = '';
-    document.body.style.width = '';
-  }, [isOpen]);
+    document.body.style.overflow = 'unset'
+    document.body.style.position = ''
+    document.body.style.top = ''
+    document.body.style.width = ''
+  }, [isOpen])
 
   // Scroll to top when project changes - instant, no animation
   useEffect(() => {
     if (modalRef.current && isOpen) {
-      modalRef.current.scrollTop = 0;
+      modalRef.current.scrollTop = 0
     }
-  }, [project.id, isOpen]);
+  }, [isOpen])
 
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
-        onClose();
+        onClose()
       }
-    };
+    }
 
     if (isOpen) {
-      document.addEventListener('keydown', handleEscape);
+      document.addEventListener('keydown', handleEscape)
     }
 
     return () => {
-      document.removeEventListener('keydown', handleEscape);
-    };
-  }, [isOpen, onClose]);
+      document.removeEventListener('keydown', handleEscape)
+    }
+  }, [isOpen, onClose])
 
   const onTouchStart = (e: React.TouchEvent) => {
-    setTouchEnd(null);
+    setTouchEnd(null)
     setTouchStart({
       x: e.targetTouches[0].clientX,
       y: e.targetTouches[0].clientY,
-    });
-  };
+    })
+  }
 
   const onTouchMove = (e: React.TouchEvent) => {
     setTouchEnd({
       x: e.targetTouches[0].clientX,
       y: e.targetTouches[0].clientY,
-    });
-  };
+    })
+  }
 
   const onTouchEnd = () => {
-    if (!touchStart || !touchEnd) return;
+    if (!touchStart || !touchEnd) return
 
-    const deltaX = touchStart.x - touchEnd.x;
-    const deltaY = touchStart.y - touchEnd.y;
+    const deltaX = touchStart.x - touchEnd.x
+    const deltaY = touchStart.y - touchEnd.y
 
     // Check if horizontal movement is greater than vertical (swipe vs scroll)
-    const isHorizontalSwipe = Math.abs(deltaX) > Math.abs(deltaY);
+    const isHorizontalSwipe = Math.abs(deltaX) > Math.abs(deltaY)
 
-    if (!isHorizontalSwipe) return; // Ignore vertical scrolling
+    if (!isHorizontalSwipe) return // Ignore vertical scrolling
 
-    const isLeftSwipe = deltaX > minSwipeDistance;
-    const isRightSwipe = deltaX < -minSwipeDistance;
+    const isLeftSwipe = deltaX > minSwipeDistance
+    const isRightSwipe = deltaX < -minSwipeDistance
 
     if (isLeftSwipe) {
-      onNext();
+      onNext()
     }
     if (isRightSwipe) {
-      onPrevious();
+      onPrevious()
     }
-  };
+  }
 
-  if (!isOpen) return null;
+  if (!isOpen) return null
 
   return (
     <div
@@ -128,7 +124,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
       onClick={onClose}
       onKeyDown={(e) => {
         if (e.key === 'Escape') {
-          onClose();
+          onClose()
         }
       }}
     >
@@ -150,9 +146,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
 
         <div className={styles.modalBody}>
           <h2 className={styles.modalTitle}>{project.name}</h2>
-          <p className={styles.modalDescription}>
-            {project.description[language]}
-          </p>
+          <p className={styles.modalDescription}>{project.description[language]}</p>
 
           <div className={styles.modalRole}>
             <h3 className={styles.roleTitle}>{t.projects.myRole}</h3>
@@ -171,9 +165,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
           </div>
 
           <div className={styles.modalAchievements}>
-            <h3 className={styles.achievementsTitle}>
-              {t.projects.achievements}
-            </h3>
+            <h3 className={styles.achievementsTitle}>{t.projects.achievements}</h3>
             <ul className={styles.achievementsList}>
               {project.achievements[language].map((achievement) => (
                 <li key={achievement} className={styles.achievementItem}>
@@ -219,7 +211,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ProjectModal;
+export default ProjectModal

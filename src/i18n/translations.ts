@@ -1,67 +1,69 @@
-export type Language = 'pl' | 'en';
+export type Language = 'pl' | 'en'
 
 export interface Translations {
   topBar: {
-    logoText: string;
-    hero: string;
-    projects: string;
-    skills: string;
-    about: string;
-    courses: string;
-    languages: string;
-    contact: string;
-  };
+    logoText: string
+    hero: string
+    projects: string
+    skills: string
+    about: string
+    courses: string
+    languages: string
+    contact: string
+  }
   hero: {
-    headline: string;
-    description: string;
-    scheduleCall: string;
-    callMe: string;
-  };
+    headline: string
+    subheadline: string
+    description: string
+    achievements: Array<{ text: string; details: string }>
+    scheduleCall: string
+    callMe: string
+  }
   projects: {
-    title: string;
-    viewLive: string;
-    viewCode: string;
-    technologies: string;
-    achievements: string;
-    myRole: string;
-  };
+    title: string
+    viewLive: string
+    viewCode: string
+    technologies: string
+    achievements: string
+    myRole: string
+  }
   skills: {
-    title: string;
-    frontend: string;
-    mobile: string;
-    backend: string;
-    testing: string;
-    ai: string;
-    payments: string;
-    design: string;
-    other: string;
-  };
+    title: string
+    frontend: string
+    mobile: string
+    backend: string
+    testing: string
+    ai: string
+    payments: string
+    design: string
+    other: string
+  }
   about: {
-    title: string;
-    content: string;
-  };
+    title: string
+    content: string
+  }
   courses: {
-    title: string;
-    list: string[];
-  };
+    title: string
+    list: string[]
+  }
   languages: {
-    title: string;
+    title: string
     list: Array<{
-      name: string;
-      level: string;
-    }>;
-  };
+      name: string
+      level: string
+    }>
+  }
   contact: {
-    title: string;
-    subtitle: string;
-    email: string;
-    phone: string;
-    location: string;
-    linkedin: string;
-  };
+    title: string
+    subtitle: string
+    email: string
+    phone: string
+    location: string
+    linkedin: string
+  }
   common: {
-    language: string;
-  };
+    language: string
+  }
 }
 
 export const translations: Record<Language, Translations> = {
@@ -77,9 +79,32 @@ export const translations: Record<Language, Translations> = {
       contact: 'Kontakt',
     },
     hero: {
-      headline: 'End‑to‑end Frontend. Płatności. Skalowalność.',
+      headline: 'Ekspert Frontend Developer',
+      subheadline: 'Budowanie skalowalnych produktów web i mobile',
       description:
-        'Frontend developer budujący end‑to‑end produkty web i mobile: od architektury i UX, przez integracje płatności, po testy E2E i skalowanie; współtwórca Kitopay (55k+ MAU, ~1M USD/rok), RightBite Flex (unikat w UAE, driver akwizycji) i Kitopi App (lojalność + zamówienia)',
+        'Frontend Developer tworzący skalowalne aplikacje webowe w React/TypeScript i funkcjonalności mobilne we Flutterze. Dostarczam produkty obsługujące dziesiątki tysięcy użytkowników i osiągam mierzalne rezultaty biznesowe.',
+      achievements: [
+        {
+          text: '4+ lata doświadczenia',
+          details:
+            'Ponad 4 lata komercyjnego doświadczenia w budowaniu skalowalnych aplikacji webowych w React/TypeScript oraz dowożeniu funkcji end-to-end (architektura → implementacja → optymalizacja).',
+        },
+        {
+          text: '55k+ aktywnych użytkowników',
+          details:
+            'Kitopay obsługuje 55k+ aktywnych użytkowników i ~200k odsłon miesięcznie; dowiozłem kluczowe flow: menu z QR → checkout, synchronizacja z POS, dzielenie rachunku i napiwki.',
+        },
+        {
+          text: '1M+ USD rocznego zysku',
+          details:
+            'Wdrożenie Kitopay we wszystkich lokalizacjach stacjonarnych Kitopi; po wprowadzeniu opłaty serwisowej produkt generuje ok. 1 mln USD rocznie.',
+        },
+        {
+          text: '80% szybsze integracje',
+          details:
+            'Stworzyłem narzędzie w JavaScript, które skróciło integrację marki o ok. 80% (z ~10 min do ~2 min) i usprawniło onboarding.',
+        },
+      ],
       scheduleCall: 'Umów Rozmowę',
       callMe: 'Zadzwoń',
     },
@@ -148,9 +173,32 @@ export const translations: Record<Language, Translations> = {
       contact: 'Contact',
     },
     hero: {
-      headline: 'End‑to‑end Frontend. Payments. Scale.',
+      headline: 'Expert Frontend Developer',
+      subheadline: 'Building scalable web & mobile products',
       description:
-        'Frontend developer building end‑to‑end web and mobile products: from architecture and UX, through payment integrations, to E2E testing and scaling; co‑creator of Kitopay (55k+ MAU, ~1M USD/year), RightBite Flex (unique in the UAE, acquisition driver), and Kitopi App (loyalty + ordering)',
+        'Frontend Developer building scalable web apps in React/TS and mobile features in Flutter. I ship products serving tens of thousands of users and deliver measurable business outcomes',
+      achievements: [
+        {
+          text: '4+ years of experience',
+          details:
+            '4+ years of commercial experience building scalable web apps in React/TypeScript and shipping end-to-end features (architecture → implementation → optimization).',
+        },
+        {
+          text: '55k+ active users',
+          details:
+            'Kitopay serves 55k+ active users and ~200k monthly views; I delivered core flows like QR menu → checkout, POS sync, bill splitting, and tipping.',
+        },
+        {
+          text: '1M+ USD yearly profit',
+          details:
+            'Launched Kitopay across Kitopi physical locations; after introducing a service fee, it contributes ~1M USD in yearly profit.',
+        },
+        {
+          text: '80% faster integrations',
+          details:
+            'Built JavaScript tooling that cut brand integration time by ~80% (from ~10 min to ~2 min) and improved onboarding efficiency.',
+        },
+      ],
       scheduleCall: 'Schedule A Call',
       callMe: 'Call Me',
     },
@@ -207,4 +255,4 @@ export const translations: Record<Language, Translations> = {
       language: 'Language',
     },
   },
-};
+}

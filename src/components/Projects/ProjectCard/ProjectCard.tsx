@@ -1,14 +1,14 @@
-import { useLanguage } from '../../../contexts/LanguageContext';
-import type { Project } from '../projectsData';
-import styles from './ProjectCard.module.scss';
+import { useLanguage } from '../../../contexts/LanguageContext'
+import type { Project } from '../projectsData'
+import styles from './ProjectCard.module.scss'
 
 interface ProjectCardProps {
-  project: Project;
-  onOpenModal: () => void;
+  project: Project
+  onOpenModal: () => void
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project, onOpenModal }) => {
-  const { language } = useLanguage();
+  const { language } = useLanguage()
 
   return (
     <button type="button" className={styles.projectCard} onClick={onOpenModal}>
@@ -29,9 +29,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onOpenModal }) => {
       </div>
       <div className={styles.cardContent}>
         <h3 className={styles.projectName}>{project.name}</h3>
-        <p className={styles.projectDescription}>
-          {project.shortDescription[language]}
-        </p>
+        <p className={styles.projectDescription}>{project.shortDescription[language]}</p>
         <div className={styles.technologies}>
           {project.technologies.map((tech) => (
             <span key={tech} className={styles.techTag}>
@@ -41,7 +39,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onOpenModal }) => {
         </div>
       </div>
     </button>
-  );
-};
+  )
+}
 
-export default ProjectCard;
+export default ProjectCard

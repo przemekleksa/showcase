@@ -1,0 +1,20 @@
+import styles from './TopBar.module.scss'
+
+interface NavButtonProps {
+  href: string
+  text: string
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void
+  style?: string
+}
+
+const NavButton = ({ href, text, onClick, style }: NavButtonProps) => {
+  return (
+    <button onClick={onClick} type="button" className={styles.navButton}>
+      <a href={href} className={style}>
+        {text}
+      </a>
+    </button>
+  )
+}
+
+export default NavButton

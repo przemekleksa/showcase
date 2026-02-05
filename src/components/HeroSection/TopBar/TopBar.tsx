@@ -1,71 +1,68 @@
-import { useCallback, useEffect, useState } from 'react';
-import { useLanguage } from '../../../contexts/LanguageContext';
-import { useTheme } from '../../../contexts/ThemeContext';
-import styles from './TopBar.module.scss';
+import { useCallback, useEffect, useState } from 'react'
+import { useLanguage } from '../../../contexts/LanguageContext'
+import { useTheme } from '../../../contexts/ThemeContext'
+import NavButton from './NavButton'
+import styles from './TopBar.module.scss'
 
 const TopBar = () => {
-  const { language, setLanguage, t } = useLanguage();
-  const { theme, toggleTheme } = useTheme();
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { language, setLanguage, t } = useLanguage()
+  const { theme, toggleTheme } = useTheme()
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const toggleLanguage = () => {
-    setLanguage(language === 'pl' ? 'en' : 'pl');
-  };
+    setLanguage(language === 'pl' ? 'en' : 'pl')
+  }
 
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+    setIsMenuOpen(!isMenuOpen)
+  }
 
   const closeMenu = useCallback(() => {
-    setIsMenuOpen(false);
-  }, []);
+    setIsMenuOpen(false)
+  }, [])
 
-  const handleNavClick = (
-    e: React.MouseEvent<HTMLAnchorElement>,
-    href: string
-  ) => {
-    e.preventDefault();
-    const element = document.querySelector(href);
+  const handleNavClick = (e: React.MouseEvent<HTMLElement>, href: string) => {
+    e.preventDefault()
+    const element = document.querySelector(href)
     if (element) {
-      const topbarHeight = 80; // Approximate height of fixed topbar
-      const elementPosition =
-        element.getBoundingClientRect().top + window.pageYOffset;
-      const offsetPosition = elementPosition - topbarHeight;
+      const topbarHeight = 80 // Approximate height of fixed topbar
+      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
+      const offsetPosition = elementPosition - topbarHeight
 
       window.scrollTo({
         top: offsetPosition,
         behavior: 'smooth',
-      });
+      })
     }
-  };
+  }
 
   const handleOverlayClick = (e: React.MouseEvent) => {
     if (e.target === e.currentTarget) {
-      closeMenu();
+      closeMenu()
     }
-  };
+  }
 
   // Prevent body scroll when menu is open and handle Escape key
   useEffect(() => {
     if (isMenuOpen) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = 'hidden'
 
       const handleEscape = (e: KeyboardEvent) => {
         if (e.key === 'Escape') {
-          closeMenu();
+          closeMenu()
         }
-      };
+      }
 
-      document.addEventListener('keydown', handleEscape);
+      document.addEventListener('keydown', handleEscape)
 
       return () => {
-        document.removeEventListener('keydown', handleEscape);
-        document.body.style.overflow = 'unset';
-      };
+        document.removeEventListener('keydown', handleEscape)
+        document.body.style.overflow = 'unset'
+      }
     }
 
-    document.body.style.overflow = 'unset';
-  }, [isMenuOpen, closeMenu]);
+    document.body.style.overflow = 'unset'
+  }, [isMenuOpen, closeMenu])
 
   return (
     <>
@@ -73,18 +70,53 @@ const TopBar = () => {
         <div className={styles.container}>
           <div className={styles.logo}>
             <div className={styles.logoIcon}>PL</div>
-            <a
+            <NavButton
               href="#hero"
-              className={styles.logoText}
+              text={t.topBar.logoText}
               onClick={(e) => handleNavClick(e, '#hero')}
-            >
-              {t.topBar.logoText}
-            </a>
+              style={styles.logoText}
+            />
           </div>
 
           {/* Desktop Navigation */}
           <nav className={styles.desktopNavigation}>
-            <a
+            <NavButton
+              href="#projects"
+              text={t.topBar.projects}
+              onClick={(e) => handleNavClick(e, '#projects')}
+              style={styles.navLink}
+            />
+            <NavButton
+              href="#skills"
+              text={t.topBar.skills}
+              onClick={(e) => handleNavClick(e, '#skills')}
+              style={styles.navLink}
+            />
+            <NavButton
+              href="#about"
+              text={t.topBar.about}
+              onClick={(e) => handleNavClick(e, '#about')}
+              style={styles.navLink}
+            />
+            <NavButton
+              href="#courses"
+              text={t.topBar.courses}
+              onClick={(e) => handleNavClick(e, '#courses')}
+              style={styles.navLink}
+            />
+            <NavButton
+              href="#languages"
+              text={t.topBar.languages}
+              onClick={(e) => handleNavClick(e, '#languages')}
+              style={styles.navLink}
+            />
+            <NavButton
+              href="#contact"
+              text={t.topBar.contact}
+              onClick={(e) => handleNavClick(e, '#contact')}
+              style={styles.navLink}
+            />
+            {/* <a
               href="#projects"
               className={styles.navLink}
               onClick={(e) => handleNavClick(e, '#projects')}
@@ -125,7 +157,7 @@ const TopBar = () => {
               onClick={(e) => handleNavClick(e, '#contact')}
             >
               {t.topBar.contact}
-            </a>
+            </a> */}
             <button
               type="button"
               className={styles.languageButton}
@@ -138,11 +170,7 @@ const TopBar = () => {
               type="button"
               className={styles.themeButton}
               onClick={toggleTheme}
-              title={
-                theme === 'light'
-                  ? 'Switch to dark mode'
-                  : 'Switch to light mode'
-              }
+              title={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
             >
               {theme === 'light' ? '🌙' : '☀️'}
             </button>
@@ -153,14 +181,12 @@ const TopBar = () => {
       {/* Mobile Hamburger Button - Outside of header */}
       <button
         type="button"
-        className={`${styles.hamburger} ${
-          isMenuOpen ? styles.hamburgerOpen : ''
-        }`}
+        className={`${styles.hamburger} ${isMenuOpen ? styles.hamburgerOpen : ''}`}
         onClick={toggleMenu}
         onKeyDown={(e) => {
           if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            toggleMenu();
+            e.preventDefault()
+            toggleMenu()
           }
         }}
         aria-label="Toggle menu"
@@ -172,22 +198,18 @@ const TopBar = () => {
 
       {/* Mobile Menu Overlay - Outside of header */}
       <div
-        className={`${styles.mobileMenuOverlay} ${
-          isMenuOpen ? styles.mobileMenuOpen : ''
-        }`}
+        className={`${styles.mobileMenuOverlay} ${isMenuOpen ? styles.mobileMenuOpen : ''}`}
         onClick={handleOverlayClick}
       >
         {/* Close Button inside overlay */}
         <button
           type="button"
-          className={`${styles.closeButton} ${
-            isMenuOpen ? styles.closeButtonVisible : ''
-          }`}
+          className={`${styles.closeButton} ${isMenuOpen ? styles.closeButtonVisible : ''}`}
           onClick={closeMenu}
           onKeyDown={(e) => {
             if (e.key === 'Enter' || e.key === ' ') {
-              e.preventDefault();
-              closeMenu();
+              e.preventDefault()
+              closeMenu()
             }
           }}
           aria-label="Close menu"
@@ -197,82 +219,68 @@ const TopBar = () => {
         </button>
 
         <nav className={styles.mobileNavigation}>
-          <a
+          <NavButton
             href="#hero"
-            className={styles.mobileNavLink}
+            text={t.topBar.hero}
             onClick={(e) => {
-              handleNavClick(e, '#hero');
-              closeMenu();
+              handleNavClick(e, '#hero')
+              closeMenu()
             }}
-          >
-            {t.topBar.hero}
-          </a>
-          <a
+          />
+          <NavButton
             href="#projects"
-            className={styles.mobileNavLink}
+            text={t.topBar.projects}
             onClick={(e) => {
-              handleNavClick(e, '#projects');
-              closeMenu();
+              handleNavClick(e, '#projects')
+              closeMenu()
             }}
-          >
-            {t.topBar.projects}
-          </a>
-          <a
+          />
+          <NavButton
             href="#skills"
-            className={styles.mobileNavLink}
+            text={t.topBar.skills}
             onClick={(e) => {
-              handleNavClick(e, '#skills');
-              closeMenu();
+              handleNavClick(e, '#skills')
+              closeMenu()
             }}
-          >
-            {t.topBar.skills}
-          </a>
-          <a
+          />
+          <NavButton
             href="#about"
-            className={styles.mobileNavLink}
+            text={t.topBar.about}
             onClick={(e) => {
-              handleNavClick(e, '#about');
-              closeMenu();
+              handleNavClick(e, '#about')
+              closeMenu()
             }}
-          >
-            {t.topBar.about}
-          </a>
-          <a
+          />
+          <NavButton
             href="#courses"
-            className={styles.mobileNavLink}
+            text={t.topBar.courses}
             onClick={(e) => {
-              handleNavClick(e, '#courses');
-              closeMenu();
+              handleNavClick(e, '#courses')
+              closeMenu()
             }}
-          >
-            {t.topBar.courses}
-          </a>
-          <a
+          />
+          <NavButton
             href="#languages"
-            className={styles.mobileNavLink}
+            text={t.topBar.languages}
             onClick={(e) => {
-              handleNavClick(e, '#languages');
-              closeMenu();
+              handleNavClick(e, '#languages')
+              closeMenu()
             }}
-          >
-            {t.topBar.languages}
-          </a>
-          <a
+          />
+          <NavButton
             href="#contact"
-            className={styles.mobileNavLink}
+            text={t.topBar.contact}
             onClick={(e) => {
-              handleNavClick(e, '#contact');
-              closeMenu();
+              handleNavClick(e, '#contact')
+              closeMenu()
             }}
-          >
-            {t.topBar.contact}
-          </a>
+          />
           <div className={styles.mobileLanguageThemeContainer}>
             <button
               type="button"
               className={styles.mobileLanguageButton}
               onClick={() => {
-                toggleLanguage();
+                toggleLanguage()
               }}
               title={t.common.language}
             >
@@ -282,13 +290,9 @@ const TopBar = () => {
               type="button"
               className={styles.mobileThemeButton}
               onClick={() => {
-                toggleTheme();
+                toggleTheme()
               }}
-              title={
-                theme === 'light'
-                  ? 'Switch to dark mode'
-                  : 'Switch to light mode'
-              }
+              title={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
             >
               {theme === 'light' ? '🌙' : '☀️'}
             </button>
@@ -296,7 +300,7 @@ const TopBar = () => {
         </nav>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default TopBar;
+export default TopBar

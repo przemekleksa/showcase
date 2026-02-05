@@ -1,5 +1,5 @@
-import profileImage from '../../../assets/images/me.png';
-import styles from './ProfileImage.module.scss';
+import profileImage from '../../../assets/images/me.png'
+import styles from './ProfileImage.module.scss'
 
 const ProfileImage = () => {
   return (
@@ -16,15 +16,11 @@ const ProfileImage = () => {
 
       <div className={styles.imageWrapper}>
         <div className={styles.profileImage}>
-          <img
-            src={profileImage}
-            alt="Przemysław Leksa"
-            className={styles.profileImg}
-          />
+          <img src={profileImage} alt="Przemysław Leksa" className={styles.profileImg} />
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ProfileImage;
+export default ProfileImage

@@ -1,10 +1,10 @@
-import type React from 'react';
-import { useLanguage } from '../../contexts/LanguageContext';
-import styles from './Skills.module.scss';
-import { skillsData } from './skillsData';
+import type React from 'react'
+import { useLanguage } from '../../contexts/LanguageContext'
+import styles from './Skills.module.scss'
+import { skillsData } from './skillsData'
 
 const Skills: React.FC = () => {
-  const { t } = useLanguage();
+  const { t } = useLanguage()
 
   return (
     <section id="skills" className={styles.skillsSection}>
@@ -31,7 +31,7 @@ const Skills: React.FC = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default Skills;
+export default Skills

@@ -1,9 +1,9 @@
-import type React from 'react';
-import { useLanguage } from '../../contexts/LanguageContext';
-import styles from './Courses.module.scss';
+import type React from 'react'
+import { useLanguage } from '../../contexts/LanguageContext'
+import styles from './Courses.module.scss'
 
 const Courses: React.FC = () => {
-  const { t } = useLanguage();
+  const { t } = useLanguage()
 
   return (
     <section id="courses" className={styles.coursesSection}>
@@ -23,7 +23,7 @@ const Courses: React.FC = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default Courses;
+export default Courses

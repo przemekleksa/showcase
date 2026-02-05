@@ -1,10 +1,10 @@
-import type React from 'react';
-import { useLanguage } from '../../contexts/LanguageContext';
-import ProfileImage from '../HeroSection/ProfileImage/ProfileImage';
-import styles from './About.module.scss';
+import type React from 'react'
+import { useLanguage } from '../../contexts/LanguageContext'
+import ProfileImage from '../HeroSection/ProfileImage/ProfileImage'
+import styles from './About.module.scss'
 
 const About: React.FC = () => {
-  const { t } = useLanguage();
+  const { t } = useLanguage()
 
   return (
     <section id="about" className={styles.aboutSection}>
@@ -26,7 +26,7 @@ const About: React.FC = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default About;
+export default About

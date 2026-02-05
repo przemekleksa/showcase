@@ -1,82 +1,76 @@
-import type React from 'react';
-import { useState } from 'react';
-import styles from './ProjectGallery.module.scss';
+import type React from 'react'
+import { useState } from 'react'
+import styles from './ProjectGallery.module.scss'
 
 interface ProjectGalleryProps {
-  screenshots: string[];
+  screenshots: string[]
 }
 
 const ProjectGallery: React.FC<ProjectGalleryProps> = ({ screenshots }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isFullscreen, setIsFullscreen] = useState(false);
-  const [touchStart, setTouchStart] = useState<{ x: number; y: number } | null>(
-    null
-  );
-  const [touchEnd, setTouchEnd] = useState<{ x: number; y: number } | null>(
-    null
-  );
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const [isFullscreen, setIsFullscreen] = useState(false)
+  const [touchStart, setTouchStart] = useState<{ x: number; y: number } | null>(null)
+  const [touchEnd, setTouchEnd] = useState<{ x: number; y: number } | null>(null)
 
   const nextImage = () => {
-    setCurrentIndex((prev) => (prev + 1) % screenshots.length);
-  };
+    setCurrentIndex((prev) => (prev + 1) % screenshots.length)
+  }
 
   const prevImage = () => {
-    setCurrentIndex(
-      (prev) => (prev - 1 + screenshots.length) % screenshots.length
-    );
-  };
+    setCurrentIndex((prev) => (prev - 1 + screenshots.length) % screenshots.length)
+  }
 
   const openFullscreen = () => {
-    setIsFullscreen(true);
-  };
+    setIsFullscreen(true)
+  }
 
   const closeFullscreen = () => {
-    setIsFullscreen(false);
-  };
+    setIsFullscreen(false)
+  }
 
   // Swipe handling for gallery
-  const minSwipeDistance = 10;
+  const minSwipeDistance = 10
 
   const onTouchStart = (e: React.TouchEvent) => {
-    e.stopPropagation(); // Prevent modal swipe
-    setTouchEnd(null);
+    e.stopPropagation() // Prevent modal swipe
+    setTouchEnd(null)
     setTouchStart({
       x: e.targetTouches[0].clientX,
       y: e.targetTouches[0].clientY,
-    });
-  };
+    })
+  }
 
   const onTouchMove = (e: React.TouchEvent) => {
-    e.stopPropagation(); // Prevent modal swipe
+    e.stopPropagation() // Prevent modal swipe
     setTouchEnd({
       x: e.targetTouches[0].clientX,
       y: e.targetTouches[0].clientY,
-    });
-  };
+    })
+  }
 
   const onTouchEnd = (e: React.TouchEvent) => {
-    e.stopPropagation(); // Prevent modal swipe
+    e.stopPropagation() // Prevent modal swipe
 
-    if (!touchStart || !touchEnd) return;
+    if (!touchStart || !touchEnd) return
 
-    const deltaX = touchStart.x - touchEnd.x;
-    const deltaY = touchStart.y - touchEnd.y;
+    const deltaX = touchStart.x - touchEnd.x
+    const deltaY = touchStart.y - touchEnd.y
 
     // Check if horizontal movement is greater than vertical (swipe vs scroll)
-    const isHorizontalSwipe = Math.abs(deltaX) > Math.abs(deltaY);
+    const isHorizontalSwipe = Math.abs(deltaX) > Math.abs(deltaY)
 
-    if (!isHorizontalSwipe) return; // Ignore vertical scrolling
+    if (!isHorizontalSwipe) return // Ignore vertical scrolling
 
-    const isLeftSwipe = deltaX > minSwipeDistance;
-    const isRightSwipe = deltaX < -minSwipeDistance;
+    const isLeftSwipe = deltaX > minSwipeDistance
+    const isRightSwipe = deltaX < -minSwipeDistance
 
     if (isLeftSwipe && screenshots.length > 1) {
-      nextImage();
+      nextImage()
     }
     if (isRightSwipe && screenshots.length > 1) {
-      prevImage();
+      prevImage()
     }
-  };
+  }
 
   if (!screenshots || screenshots.length === 0) {
     return (
@@ -89,7 +83,7 @@ const ProjectGallery: React.FC<ProjectGalleryProps> = ({ screenshots }) => {
           </div>
         </div>
       </div>
-    );
+    )
   }
 
   return (
@@ -106,8 +100,8 @@ const ProjectGallery: React.FC<ProjectGalleryProps> = ({ screenshots }) => {
           onClick={openFullscreen}
           onKeyDown={(e) => {
             if (e.key === 'Enter' || e.key === ' ') {
-              e.preventDefault();
-              openFullscreen();
+              e.preventDefault()
+              openFullscreen()
             }
           }}
         >
@@ -136,9 +130,7 @@ const ProjectGallery: React.FC<ProjectGalleryProps> = ({ screenshots }) => {
                 <button
                   key={`dot-${screenshot}`}
                   type="button"
-                  className={`${styles.dot} ${
-                    index === currentIndex ? styles.active : ''
-                  }`}
+                  className={`${styles.dot} ${index === currentIndex ? styles.active : ''}`}
                   onClick={() => setCurrentIndex(index)}
                 />
               ))}
@@ -162,7 +154,7 @@ const ProjectGallery: React.FC<ProjectGalleryProps> = ({ screenshots }) => {
           onClick={closeFullscreen}
           onKeyDown={(e) => {
             if (e.key === 'Escape') {
-              closeFullscreen();
+              closeFullscreen()
             }
           }}
         >
@@ -174,11 +166,7 @@ const ProjectGallery: React.FC<ProjectGalleryProps> = ({ screenshots }) => {
             onTouchMove={onTouchMove}
             onTouchEnd={onTouchEnd}
           >
-            <button
-              type="button"
-              className={styles.closeButton}
-              onClick={closeFullscreen}
-            >
+            <button type="button" className={styles.closeButton} onClick={closeFullscreen}>
               ✕
             </button>
             <img
@@ -188,21 +176,13 @@ const ProjectGallery: React.FC<ProjectGalleryProps> = ({ screenshots }) => {
             />
             {screenshots.length > 1 && (
               <div className={styles.fullscreenNavigation}>
-                <button
-                  type="button"
-                  className={styles.fullscreenNavButton}
-                  onClick={prevImage}
-                >
+                <button type="button" className={styles.fullscreenNavButton} onClick={prevImage}>
                   ‹
                 </button>
                 <span className={styles.imageCounter}>
                   {currentIndex + 1} / {screenshots.length}
                 </span>
-                <button
-                  type="button"
-                  className={styles.fullscreenNavButton}
-                  onClick={nextImage}
-                >
+                <button type="button" className={styles.fullscreenNavButton} onClick={nextImage}>
                   ›
                 </button>
               </div>
@@ -211,7 +191,7 @@ const ProjectGallery: React.FC<ProjectGalleryProps> = ({ screenshots }) => {
         </button>
       )}
     </>
-  );
-};
+  )
+}
 
-export default ProjectGallery;
+export default ProjectGallery

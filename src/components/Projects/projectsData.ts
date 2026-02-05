@@ -1,31 +1,31 @@
 // Base path for images - automatically uses /showcase/ in production
-const basePath = import.meta.env.PROD ? '/showcase' : '';
+const basePath = import.meta.env.PROD ? '/showcase' : ''
 
 export interface Project {
-  id: string;
-  name: string;
+  id: string
+  name: string
   shortDescription: {
-    en: string;
-    pl: string;
-  };
+    en: string
+    pl: string
+  }
   description: {
-    en: string;
-    pl: string;
-  };
+    en: string
+    pl: string
+  }
   role: {
-    en: string;
-    pl: string;
-  };
-  screenshots?: string[];
-  technologies: string[];
+    en: string
+    pl: string
+  }
+  screenshots?: string[]
+  technologies: string[]
   achievements: {
-    en: string[];
-    pl: string[];
-  };
-  liveUrl?: string;
-  githubUrl?: string;
-  appStoreUrl?: string;
-  githubHidden?: boolean;
+    en: string[]
+    pl: string[]
+  }
+  liveUrl?: string
+  githubUrl?: string
+  appStoreUrl?: string
+  githubHidden?: boolean
 }
 
 export const projects: Project[] = [
@@ -289,4 +289,4 @@ export const projects: Project[] = [
     liveUrl: 'https://brandlp.kitopiconnect.com/',
     githubHidden: true,
   },
-];
+]

@@ -1,9 +1,9 @@
-import type React from 'react';
-import { useLanguage } from '../../contexts/LanguageContext';
-import styles from './Contact.module.scss';
+import type React from 'react'
+import { useLanguage } from '../../contexts/LanguageContext'
+import styles from './Contact.module.scss'
 
 const Contact: React.FC = () => {
-  const { t } = useLanguage();
+  const { t } = useLanguage()
 
   const contactInfo = [
     {
@@ -30,7 +30,7 @@ const Contact: React.FC = () => {
       value: 'linkedin.com/in/pleksa',
       link: 'https://linkedin.com/in/pleksa',
     },
-  ];
+  ]
 
   return (
     <section id="contact" className={styles.contactSection}>
@@ -45,11 +45,7 @@ const Contact: React.FC = () => {
                 key={item.label}
                 href={item.link}
                 target={item.link.startsWith('http') ? '_blank' : undefined}
-                rel={
-                  item.link.startsWith('http')
-                    ? 'noopener noreferrer'
-                    : undefined
-                }
+                rel={item.link.startsWith('http') ? 'noopener noreferrer' : undefined}
                 className={styles.contactCard}
               >
                 <div className={styles.contactIcon}>
@@ -75,7 +71,7 @@ const Contact: React.FC = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default Contact;
+export default Contact
