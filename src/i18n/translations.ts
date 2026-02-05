@@ -21,6 +21,7 @@ export interface Translations {
   }
   projects: {
     title: string
+    subtitle: string
     viewLive: string
     viewCode: string
     technologies: string
@@ -82,7 +83,7 @@ export const translations: Record<Language, Translations> = {
       headline: 'Ekspert Frontend Developer',
       subheadline: 'Budowanie skalowalnych produktów web i mobile',
       description:
-        'Frontend Developer tworzący skalowalne aplikacje webowe w React/TypeScript i funkcjonalności mobilne we Flutterze. Dostarczam produkty obsługujące dziesiątki tysięcy użytkowników i osiągam mierzalne rezultaty biznesowe.',
+        'Frontend Developer tworzący skalowalne aplikacje webowe w React/Next.js i funkcjonalności mobilne we Flutterze. Dostarczam produkty obsługujące dziesiątki tysięcy użytkowników i osiągam mierzalne rezultaty biznesowe.',
       achievements: [
         {
           text: '4+ lata doświadczenia',
@@ -110,6 +111,7 @@ export const translations: Record<Language, Translations> = {
     },
     projects: {
       title: 'Projekty',
+      subtitle: 'Kliknij projekt, aby zobaczyć szczegóły.',
       viewLive: 'Zobacz Live',
       viewCode: 'Zobacz Kod',
       technologies: 'Technologie:',
@@ -130,7 +132,7 @@ export const translations: Record<Language, Translations> = {
     about: {
       title: 'O mnie',
       content:
-        'Frontend Developer z wieloletnim doświadczeniem w budowaniu aplikacji web i mobile. Specjalizuję się w dostarczaniu produktów end-to-end – od architektury i rozwoju po optymalizację i skalowanie.\n\nWspółtworzyłem aplikacje obsługujące dziesiątki tysięcy użytkowników, w tym Kitopay (55k+ aktywnych użytkowników, generując ~1M USD rocznego zysku), system RightBite Flex (unikalny w UAE, przyciągający nowych klientów) oraz Kitopi App (platforma zamówień i lojalności cross-brand). Wykwalifikowany w złożonych integracjach płatności i optymalizacji procesów (obniżyłem koszty Jira o 4k USD/miesiąc, skróciłem czas integracji brandów o 80%). Biegły w wykorzystywaniu narzędzi AI do zwiększania produktywności i jakości kodu.\n\nObecnie poszukuję roli frontend developera (zdalnie lub hybrydowo), idealnie z możliwościami współtworzenia rozwoju mobile (Flutter, React Native) i designu produktu. Moim długoterminowym celem jest rozwój jako M-shape developer poprzez łączenie silnej ekspertyzy frontend z umiejętnościami mobile i design.',
+        'Jestem Frontend Developerem z 4+ latami doświadczenia komercyjnego w budowaniu skalowalnych aplikacji webowych i dostarczaniu funkcjonalności mobilnych. Mam mocne zaplecze w React/TypeScript (m.in. Next.js, React Query, Redux) oraz w testowaniu i jakości (Playwright, Vitest, Jest, Cypress), dzięki czemu dowożę stabilne funkcje i dbam o przewidywalny rozwój produktu. W codziennej pracy stawiam na wydajność (code splitting, lazy loading, memoizacja), dobrą architekturę frontendu, czytelne UI oraz współpracę z backendem przy integracjach API i systemach produkcyjnych.\n\nPoza stricte UI mam doświadczenie w trudniejszych obszarach produktowych: integracje (w tym płatności), dopinanie przepływów end‑to‑end, rozwiązywanie edge case’ów i optymalizacja procesów w zespole (automatyzacje, narzędzia usprawniające delivery). Jestem inżynierem informatyki (studia kierunkowe) i swobodnie pracuję po angielsku na poziomie C2, także w środowisku międzynarodowym.\n\nStale podnoszę umiejętności: regularnie uczę się z kursów (m.in. Next 13, React Query, UI/UX w Figma) i wdrażam usprawnienia do codziennego workflow, w tym rozsądne wykorzystanie narzędzi AI jako wsparcia w analizie, refaktorach i zwiększaniu jakości kodu.',
     },
     courses: {
       title: 'Kursy',
@@ -176,7 +178,7 @@ export const translations: Record<Language, Translations> = {
       headline: 'Expert Frontend Developer',
       subheadline: 'Building scalable web & mobile products',
       description:
-        'Frontend Developer building scalable web apps in React/TS and mobile features in Flutter. I ship products serving tens of thousands of users and deliver measurable business outcomes',
+        'Frontend Developer building scalable web apps in React/Next.js and mobile features in Flutter. I ship products serving tens of thousands of users and deliver measurable business outcomes',
       achievements: [
         {
           text: '4+ years of experience',
@@ -204,6 +206,7 @@ export const translations: Record<Language, Translations> = {
     },
     projects: {
       title: 'Projects',
+      subtitle: 'Click on a project to see details.',
       viewLive: 'View Live',
       viewCode: 'View Code',
       technologies: 'Technologies:',
@@ -224,7 +227,7 @@ export const translations: Record<Language, Translations> = {
     about: {
       title: 'About Me',
       content:
-        'Frontend Developer with years of experience in building web and mobile applications. Specialized in delivering end-to-end products – from architecture and development to optimization and scaling.\n\nI co-created apps serving tens of thousands of users, including Kitopay (55k+ active users, generating ~1M USD yearly profit), the RightBite Flex system (unique in the UAE, attracting new customers), and the Kitopi App (cross-brand food ordering & loyalty platform). Skilled in complex payment integrations and process optimization (cut Jira costs by 4k USD/month, reduced brand integration time by 80%). Proficient in leveraging AI tools to boost productivity and code quality.\n\nI am currently looking for a frontend developer role (remote or hybrid), ideally with opportunities to contribute to mobile development (Flutter, React Native) and product design. My long-term goal is to grow as a M-shape developer by combining strong frontend expertise with mobile and design skills.',
+        'I’m a Frontend Developer with 4+ years of commercial experience building scalable web applications and delivering mobile features. My core stack is React/TypeScript (including Next.js, React Query, Redux), with a strong focus on quality and testing (Playwright, Vitest, Jest, Cypress). I care about performance and maintainability—clean frontend architecture, reliable UX flows, and practical optimizations (code splitting, lazy loading, memoization).\n\nBeyond UI, I’m comfortable with end-to-end product work: API integrations (including payments), handling edge cases, and improving team delivery through automation and tooling. I hold a Computer Science engineering degree and I work fluently in English at C2 level in international environments.\n\nI’m committed to continuous learning—actively upskilling through courses (e.g., Next 13, React Query, Figma UI/UX) and improving my daily developer workflow, including thoughtful use of AI tools to support analysis, refactoring, and code quality.',
     },
     courses: {
       title: 'Courses',

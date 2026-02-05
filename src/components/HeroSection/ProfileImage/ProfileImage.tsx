@@ -1,4 +1,5 @@
-import profileImage from '../../../assets/images/me.png'
+import profileImagePng from '../../../assets/images/me.png'
+import profileImageWebp from '../../../assets/images/me.webp'
 import styles from './ProfileImage.module.scss'
 
 const ProfileImage = () => {
@@ -16,7 +17,10 @@ const ProfileImage = () => {
 
       <div className={styles.imageWrapper}>
         <div className={styles.profileImage}>
-          <img src={profileImage} alt="Przemysław Leksa" className={styles.profileImg} />
+          <picture>
+            <source srcSet={profileImageWebp} type="image/webp" />
+            <img src={profileImagePng} alt="Przemysław Leksa" className={styles.profileImg} />
+          </picture>
         </div>
       </div>
     </div>

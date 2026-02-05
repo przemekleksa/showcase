@@ -105,11 +105,17 @@ const ProjectGallery: React.FC<ProjectGalleryProps> = ({ screenshots }) => {
             }
           }}
         >
-          <img
-            src={screenshots[currentIndex]}
-            alt={`Screenshot ${currentIndex + 1}`}
-            className={styles.image}
-          />
+          <picture>
+            <source
+              srcSet={screenshots[currentIndex].replace(/\.(jpg|jpeg|png)$/, '.webp')}
+              type="image/webp"
+            />
+            <img
+              src={screenshots[currentIndex]}
+              alt={`Screenshot ${currentIndex + 1}`}
+              className={styles.image}
+            />
+          </picture>
           <div className={styles.overlay}>
             <span className={styles.zoomIcon}>🔍</span>
           </div>
@@ -169,11 +175,17 @@ const ProjectGallery: React.FC<ProjectGalleryProps> = ({ screenshots }) => {
             <button type="button" className={styles.closeButton} onClick={closeFullscreen}>
               ✕
             </button>
-            <img
-              src={screenshots[currentIndex]}
-              alt={`Screenshot ${currentIndex + 1}`}
-              className={styles.fullscreenImage}
-            />
+            <picture className={styles.fullscreenImageWrapper}>
+              <source
+                srcSet={screenshots[currentIndex].replace(/\.(jpg|jpeg|png)$/, '.webp')}
+                type="image/webp"
+              />
+              <img
+                src={screenshots[currentIndex]}
+                alt={`Screenshot ${currentIndex + 1}`}
+                className={styles.fullscreenImage}
+              />
+            </picture>
             {screenshots.length > 1 && (
               <div className={styles.fullscreenNavigation}>
                 <button type="button" className={styles.fullscreenNavButton} onClick={prevImage}>

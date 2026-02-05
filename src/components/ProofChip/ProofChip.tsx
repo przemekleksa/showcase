@@ -5,14 +5,23 @@ const ProofChip = ({ text, details }: { text: string; details: string }) => {
   const [showDetails, setShowDetail] = useState(false)
   return (
     <>
-      <div
+      <button
+        type="button"
         className={styles.proofChip}
         onClick={() => setShowDetail(!showDetails)}
-        onKeyUp={() => setShowDetail(!showDetails)}
-        onKeyDown={() => setShowDetail(!showDetails)}
+        aria-expanded={showDetails}
       >
         {text}
-      </div>
+        <svg
+          className={`${styles.chevron} ${showDetails ? styles.chevronOpen : ''}`}
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
       {showDetails && <div className={styles.details}>{details}</div>}
     </>
   )

@@ -43,7 +43,17 @@ export const skillsData: SkillCategory[] = [
   {
     id: 'ai',
     name: 'ai',
-    skills: ['Cursor', 'Kiro', 'GitHub Copilot', 'Gemini CLI', 'ChatGPT', 'Perplexity', 'Granola'],
+    skills: [
+      'Claude Code',
+      'Antigravity',
+      'Cursor',
+      'GitHub Copilot',
+      'Codex',
+      'Gemini CLI',
+      'ChatGPT',
+      'Perplexity',
+      'Kiro',
+    ],
     icon: '🤖',
   },
   {

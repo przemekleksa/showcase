@@ -39,6 +39,7 @@ const Projects: React.FC = () => {
     <section id="projects" className={styles.projectsSection}>
       <div className={styles.container}>
         <h2 className={styles.sectionTitle}>{t.projects.title}</h2>
+        <h3 className={styles.sectionSubtitle}>{t.projects.subtitle}</h3>
         <div className={styles.projectsGrid}>
           {projects.map((project) => (
             <ProjectCard

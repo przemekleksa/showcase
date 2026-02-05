@@ -205,13 +205,9 @@
 
   /* Light theme desktop overrides */
   [data-theme='light'] .navButton {
-    background: rgba(22, 56, 83, 0.1);
     color: #163853;
-    border: 1px solid rgba(22, 56, 83, 0.2);
 
     &:hover {
-      background: rgba(22, 56, 83, 0.2);
-      border-color: rgba(22, 56, 83, 0.3);
       color: #163853;
     }
   }

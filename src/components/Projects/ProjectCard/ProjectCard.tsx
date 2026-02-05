@@ -14,11 +14,17 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onOpenModal }) => {
     <button type="button" className={styles.projectCard} onClick={onOpenModal}>
       <div className={styles.screenshot}>
         {project.screenshots && project.screenshots.length > 0 ? (
-          <img
-            src={project.screenshots[0]}
-            alt={`${project.name} screenshot`}
-            className={styles.screenshotImage}
-          />
+          <picture>
+            <source
+              srcSet={project.screenshots[0].replace(/\.(jpg|jpeg|png)$/, '.webp')}
+              type="image/webp"
+            />
+            <img
+              src={project.screenshots[0]}
+              alt={`${project.name} screenshot`}
+              className={styles.screenshotImage}
+            />
+          </picture>
         ) : (
           <div className={styles.placeholderImage}>
             <div className={styles.imagePlaceholder}>
