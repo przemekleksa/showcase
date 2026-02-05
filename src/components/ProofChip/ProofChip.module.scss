@@ -10,7 +10,7 @@
     cursor: pointer;
     display: inline-flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     flex-wrap: wrap;
     gap: 0.5rem;
     min-width: 100%;
@@ -23,6 +23,7 @@
 @media (min-width: 768px) {
     .proofChip {
         min-height: 0;
+        justify-content: space-between;
     }
 }
 

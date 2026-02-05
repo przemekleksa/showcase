@@ -5,13 +5,24 @@ import styles from './ProjectCard.module.scss'
 interface ProjectCardProps {
   project: Project
   onOpenModal: () => void
+  isHinting?: boolean
+  hintText?: string
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ project, onOpenModal }) => {
+const ProjectCard: React.FC<ProjectCardProps> = ({ project, onOpenModal, isHinting, hintText }) => {
   const { language } = useLanguage()
 
   return (
-    <button type="button" className={styles.projectCard} onClick={onOpenModal}>
+    <button
+      type="button"
+      className={`${styles.projectCard} ${isHinting ? styles.hinting : ''}`}
+      onClick={onOpenModal}
+    >
+      {/* Overlay for hinting animation */}
+      <div className={styles.overlay}>
+        <span className={styles.hintText}>{hintText}</span>
+      </div>
+
       <div className={styles.screenshot}>
         {project.screenshots && project.screenshots.length > 0 ? (
           <picture>

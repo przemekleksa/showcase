@@ -11,12 +11,17 @@
   width: 100%;
   text-align: left;
   padding: 0;
+  position: relative; // Ensure it acts as positioning context for overlay
 
   &:hover {
     transform: translateY(-4px);
     box-shadow: 0 8px 25px var(--shadow);
   }
 }
+
+// ... existing code ...
+
+
 
 .screenshot {
   width: 100%;
@@ -97,26 +102,70 @@
   border: 1px solid rgba(22, 56, 83, 0.2);
 }
 
-/* Dark theme styles */
-[data-theme='dark'] .screenshot {
-  background: #374151;
-}
-
-[data-theme='dark'] .placeholderImage {
-  background: linear-gradient(135deg, #4b5563, #6b7280);
-}
-
-[data-theme='dark'] .imagePlaceholder {
-  background: rgba(0, 0, 0, 0.3);
-  border-color: #9ca3af;
-}
-
-[data-theme='dark'] .placeholderText {
-  color: #d1d5db;
-}
-
 [data-theme='dark'] .techTag {
   background: rgba(255, 255, 255, 0.1);
   color: #f3f4f6;
   border-color: rgba(255, 255, 255, 0.2);
 }
+
+@keyframes heartbeat {
+  0% {
+    transform: scale(1);
+  }
+
+  14% {
+    transform: scale(1.05);
+  }
+
+  28% {
+    transform: scale(1);
+  }
+
+  42% {
+    transform: scale(1.05);
+  }
+
+  70% {
+    transform: scale(1);
+  }
+}
+
+.hinting {
+  animation: heartbeat 2s ease-in-out;
+
+  .overlay {
+    opacity: 1;
+  }
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 10;
+}
+
+.hintText {
+  color: white;
+  font-size: 1.25rem;
+  font-weight: 400;
+  text-align: center;
+  padding: 1rem;
+}
+
+[data-theme='dark'] .hintText {
+  color: var(--text-secondary);
+}
+
+// .hintText {
+//   color: white;
+//   font-size: 1.25rem;
+//   font-weight: 600;
+//   text-align: center;
+//   padding: 1rem;
+// }
