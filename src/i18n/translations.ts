@@ -62,6 +62,9 @@ export interface Translations {
     location: string
     linkedin: string
   }
+  footer: {
+    copyright: string
+  }
   common: {
     language: string
   }
@@ -159,6 +162,9 @@ export const translations: Record<Language, Translations> = {
       location: 'Lokalizacja',
       linkedin: 'LinkedIn',
     },
+    footer: {
+      copyright: '© {{year}} Przemysław Leksa. Wszelkie prawa zastrzeżone.',
+    },
     common: {
       language: 'Język',
     },
@@ -253,6 +259,9 @@ export const translations: Record<Language, Translations> = {
       phone: 'Phone',
       location: 'Location',
       linkedin: 'LinkedIn',
+    },
+    footer: {
+      copyright: '© {{year}} Przemysław Leksa. All rights reserved.',
     },
     common: {
       language: 'Language',
