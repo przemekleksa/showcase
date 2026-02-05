@@ -13,6 +13,9 @@
   position: relative;
   overflow: hidden;
   z-index: 1;
+  display: flex;
+  align-items: flex-start;
+  padding-top: 8rem;
 }
 
 .content {
@@ -21,9 +24,9 @@
   justify-content: space-between;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 8rem 2rem 4rem;
-  min-height: 100vh;
+  padding: 0 2rem 4rem;
   gap: 4rem;
+  width: 100%;
 }
 
 .textContent {
@@ -140,6 +143,8 @@
   }
 }
 
+
+
 @media (max-width: 768px) {
   .content {
     flex-direction: column;
@@ -147,7 +152,7 @@
     padding: 6rem 1rem 2rem;
     gap: 2rem;
     justify-content: center; // Center content vertically
-    min-height: 100vh; // Full viewport height
+    // min-height: 100vh; // Full viewport height
     align-items: center; // Center horizontally
   }
 
@@ -186,6 +191,13 @@
 
   .profileImage {
     display: none;
+  }
+}
+
+/* For taller screens (large monitors), add extra top padding for visual balance */
+@media (min-height: 1024px) {
+  .content {
+    padding-top: 20dvh;
   }
 }
 
