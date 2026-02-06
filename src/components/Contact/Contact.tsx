@@ -19,9 +19,16 @@ const Contact: React.FC = () => {
     {
       icon: '📧',
       label: t.contact.email,
-      value: 'przemyslawleksa@gmail.com',
+      value: (
+        <>
+          przemyslawleksa
+          <wbr />
+          @gmail.com
+        </>
+      ),
       link: 'mailto:przemyslawleksa@gmail.com',
       canCopy: true,
+      copyValue: 'przemyslawleksa@gmail.com',
     },
     {
       icon: '📱',
@@ -88,7 +95,12 @@ const Contact: React.FC = () => {
                 <button
                   type="button"
                   className={styles.copyButton}
-                  onClick={() => handleCopy(item.copyValue || item.value, item.label)}
+                  onClick={() =>
+                    handleCopy(
+                      item.copyValue || (typeof item.value === 'string' ? item.value : ''),
+                      item.label
+                    )
+                  }
                   title="Copy to clipboard"
                 >
                   {copiedLabel === item.label ? (
