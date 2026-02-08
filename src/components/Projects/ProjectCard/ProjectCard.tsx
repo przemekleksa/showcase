@@ -1,4 +1,5 @@
 import { useLanguage } from '../../../contexts/LanguageContext'
+import { trackEvent } from '../../../utils/analytics'
 import type { Project } from '../projectsData'
 import styles from './ProjectCard.module.scss'
 
@@ -16,8 +17,14 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onOpenModal, isHinti
     <button
       type="button"
       className={`${styles.projectCard} ${isHinting ? styles.hinting : ''}`}
-      onClick={onOpenModal}
-      data-gtm-id={`project-card-${project.id}`}
+      onClick={() => {
+        trackEvent({
+          category: 'Projects',
+          action: 'click_project',
+          label: project.id,
+        })
+        onOpenModal()
+      }}
     >
       {/* Overlay for hinting animation */}
       <div className={styles.overlay}>

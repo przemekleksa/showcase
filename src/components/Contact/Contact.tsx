@@ -1,6 +1,7 @@
 import type React from 'react'
 import { useState } from 'react'
 import { useLanguage } from '../../contexts/LanguageContext'
+import { trackEvent } from '../../utils/analytics'
 import styles from './Contact.module.scss'
 
 const Contact: React.FC = () => {
@@ -74,7 +75,13 @@ const Contact: React.FC = () => {
                   target={item.link.startsWith('http') ? '_blank' : undefined}
                   rel={item.link.startsWith('http') ? 'noopener noreferrer' : undefined}
                   className={styles.cardLink}
-                  data-gtm-id={`contact-link-${item.id}`}
+                  onClick={() =>
+                    trackEvent({
+                      category: 'Contact',
+                      action: 'click_link',
+                      label: item.id,
+                    })
+                  }
                 >
                   <div className={styles.contactIcon}>
                     <span className={styles.icon}>{item.icon}</span>
@@ -100,14 +107,18 @@ const Contact: React.FC = () => {
                 <button
                   type="button"
                   className={styles.copyButton}
-                  onClick={() =>
+                  onClick={() => {
+                    trackEvent({
+                      category: 'Contact',
+                      action: 'copy_info',
+                      label: item.id,
+                    })
                     handleCopy(
                       item.copyValue || (typeof item.value === 'string' ? item.value : ''),
                       item.label
                     )
-                  }
+                  }}
                   title="Copy to clipboard"
-                  data-gtm-id={`contact-copy-${item.id}`}
                 >
                   {copiedLabel === item.label ? (
                     <svg

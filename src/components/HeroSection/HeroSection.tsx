@@ -1,4 +1,5 @@
 import { useLanguage } from '../../contexts/LanguageContext'
+import { trackEvent } from '../../utils/analytics'
 import ProofChip from '../ProofChip/ProofChip'
 import styles from './HeroSection.module.scss'
 import ProfileImage from './ProfileImage/ProfileImage'
@@ -49,8 +50,14 @@ const HeroSection = () => {
           <button
             type="button"
             className={styles.ctaButton}
-            onClick={handleScheduleCall}
-            data-gtm-id="hero-cta-button"
+            onClick={() => {
+              trackEvent({
+                category: 'Hero',
+                action: 'click_cta',
+                label: 'schedule_call',
+              })
+              handleScheduleCall()
+            }}
           >
             {getButtonText()}
           </button>
