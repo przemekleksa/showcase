@@ -17,6 +17,7 @@ const Contact: React.FC = () => {
 
   const contactInfo = [
     {
+      id: 'email',
       icon: '📧',
       label: t.contact.email,
       value: (
@@ -31,6 +32,7 @@ const Contact: React.FC = () => {
       copyValue: 'przemyslawleksa@gmail.com',
     },
     {
+      id: 'phone',
       icon: '📱',
       label: t.contact.phone,
       value: '+48 514 230 618',
@@ -39,6 +41,7 @@ const Contact: React.FC = () => {
       copyValue: '+48514230618',
     },
     {
+      id: 'location',
       icon: '📍',
       label: t.contact.location,
       value: 'Cracow, Poland',
@@ -46,6 +49,7 @@ const Contact: React.FC = () => {
       canCopy: false,
     },
     {
+      id: 'linkedin',
       icon: '💼',
       label: t.contact.linkedin,
       value: 'linkedin.com/in/pleksa',
@@ -70,6 +74,7 @@ const Contact: React.FC = () => {
                   target={item.link.startsWith('http') ? '_blank' : undefined}
                   rel={item.link.startsWith('http') ? 'noopener noreferrer' : undefined}
                   className={styles.cardLink}
+                  data-gtm-id={`contact-link-${item.id}`}
                 >
                   <div className={styles.contactIcon}>
                     <span className={styles.icon}>{item.icon}</span>
@@ -102,6 +107,7 @@ const Contact: React.FC = () => {
                     )
                   }
                   title="Copy to clipboard"
+                  data-gtm-id={`contact-copy-${item.id}`}
                 >
                   {copiedLabel === item.label ? (
                     <svg

@@ -17,6 +17,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onOpenModal, isHinti
       type="button"
       className={`${styles.projectCard} ${isHinting ? styles.hinting : ''}`}
       onClick={onOpenModal}
+      data-gtm-id={`project-card-${project.id}`}
     >
       {/* Overlay for hinting animation */}
       <div className={styles.overlay}>

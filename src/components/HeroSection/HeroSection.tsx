@@ -46,7 +46,12 @@ const HeroSection = () => {
               </li>
             ))}
           </ul>
-          <button type="button" className={styles.ctaButton} onClick={handleScheduleCall}>
+          <button
+            type="button"
+            className={styles.ctaButton}
+            onClick={handleScheduleCall}
+            data-gtm-id="hero-cta-button"
+          >
             {getButtonText()}
           </button>
         </div>
