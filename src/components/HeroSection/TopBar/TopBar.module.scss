@@ -43,9 +43,10 @@
 }
 
 .logoIcon {
-  width: 40px;
-  height: 40px;
-  background: linear-gradient(135deg, #163853, #b91c1c);
+  min-width: 44px;
+  min-height: 44px;
+  background: linear-gradient(135deg, #1A2F4F, #5D3CA5);
+  text-shadow: 0px 0px 14px rgba(255, 255, 255, 1);
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -54,7 +55,19 @@
   font-size: 0.9rem;
   color: white;
   letter-spacing: -0.5px;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: #358ed7;
+    font-weight: 900;
+    text-shadow: 0px 0px 0px rgba(255, 255, 255, 1);
+    transform: scale(1.05);
+  }
+
+
 }
+
+
 
 .logoText {
   font-size: 1.25rem;
@@ -164,9 +177,6 @@
     justify-content: center;
   }
 
-  &:hover {
-    color: #dc2626;
-  }
 }
 
 /* Light theme mobile styles override */

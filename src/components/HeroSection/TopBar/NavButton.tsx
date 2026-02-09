@@ -9,7 +9,7 @@ interface NavButtonProps {
 
 const NavButton = ({ href, text, onClick, style }: NavButtonProps) => {
   return (
-    <button onClick={onClick} type="button" className={styles.navButton}>
+    <button onClick={onClick} type="button" className={styles.navButton} tabIndex={-1}>
       <a href={href} className={style}>
         {text}
       </a>

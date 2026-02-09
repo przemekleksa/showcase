@@ -69,7 +69,12 @@ const TopBar = () => {
       <header className={styles.topBar}>
         <div className={styles.container}>
           <div className={styles.logo}>
-            <div className={styles.logoIcon}>PL</div>
+            <NavButton
+              href="#hero"
+              text="PL"
+              onClick={(e) => handleNavClick(e, '#hero')}
+              style={styles.logoIcon}
+            />
             <NavButton
               href="#hero"
               text={t.topBar.logoText}
