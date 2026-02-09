@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { useLanguage } from '../../contexts/LanguageContext'
 import { trackEvent } from '../../utils/analytics'
 import ProofChip from '../ProofChip/ProofChip'
@@ -7,6 +8,31 @@ import TopBar from './TopBar/TopBar'
 
 const HeroSection = () => {
   const { t } = useLanguage()
+  const [isGlitching, setIsGlitching] = useState(true)
+
+  useEffect(() => {
+    let timeoutId: ReturnType<typeof setTimeout>
+
+    const runGlitchCycle = () => {
+      // Animation duration (slowed down significantly)
+      const glitchDuration = 3000
+      // Random wait between 1s and 3s
+      const randomWait = Math.random() * 2000 + 3000
+
+      setIsGlitching(true)
+
+      timeoutId = setTimeout(() => {
+        setIsGlitching(false)
+        timeoutId = setTimeout(runGlitchCycle, randomWait)
+      }, glitchDuration)
+    }
+
+    const initialTimeout = setTimeout(runGlitchCycle, 1000)
+    return () => {
+      clearTimeout(timeoutId)
+      clearTimeout(initialTimeout)
+    }
+  }, [])
 
   const handleScheduleCall = () => {
     // Check if it's mobile (touch device)
@@ -37,7 +63,12 @@ const HeroSection = () => {
           <div className={styles.nameContainer}>
             <h2 className={styles.name}>{t.topBar.logoText}</h2>
           </div>
-          <h1 className={styles.headline}>{t.hero.headline}</h1>
+          <h1
+            className={`${styles.headline} ${isGlitching ? styles.glitching : ''}`}
+            data-text={t.hero.headline}
+          >
+            {t.hero.headline}
+          </h1>
           <h2 className={styles.subheadline}>{t.hero.subheadline}</h2>
           <p className={styles.description}>{t.hero.description}</p>
           <ul className={styles.achievements}>
