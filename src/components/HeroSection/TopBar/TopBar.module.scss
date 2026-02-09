@@ -34,6 +34,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 12px;
 }
 
 .logo {
@@ -83,6 +84,11 @@
   letter-spacing: -0.5px;
   transition: color 0.3s ease;
   text-decoration: none;
+
+  @media (max-width: 1060px) {
+    display: none !important;
+
+  }
 }
 
 .logoText:hover {
@@ -147,6 +153,10 @@
   display: flex;
   align-items: center;
   gap: 2rem;
+
+  @media (max-width: 1060px) {
+    gap: 12px;
+  }
 }
 
 .navLink {
@@ -158,6 +168,10 @@
 
   &:hover {
     color: #358ed7;
+  }
+
+  @media (max-width: 1060px) {
+    font-size: 1rem;
   }
 }
 
@@ -459,7 +473,6 @@
 @media (max-width: 768px) {
   .topBar {
     display: none;
-    /* Ukryj cały topbar na mobile */
   }
 
   .hamburger {
@@ -473,14 +486,12 @@
 
 .mobileLanguageThemeContainer {
   display: flex;
-  // flex-direction: column;
   justify-content: space-between;
   width: 100dvw;
   gap: 1rem;
   position: fixed;
   bottom: 20px;
   padding: 0 12px;
-  // right: 20px;
 
 
   button {

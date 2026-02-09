@@ -121,48 +121,6 @@ const TopBar = () => {
               onClick={(e) => handleNavClick(e, '#contact')}
               style={styles.navLink}
             />
-            {/* <a
-              href="#projects"
-              className={styles.navLink}
-              onClick={(e) => handleNavClick(e, '#projects')}
-            >
-              {t.topBar.projects}
-            </a>
-            <a
-              href="#skills"
-              className={styles.navLink}
-              onClick={(e) => handleNavClick(e, '#skills')}
-            >
-              {t.topBar.skills}
-            </a>
-            <a
-              href="#about"
-              className={styles.navLink}
-              onClick={(e) => handleNavClick(e, '#about')}
-            >
-              {t.topBar.about}
-            </a>
-            <a
-              href="#courses"
-              className={styles.navLink}
-              onClick={(e) => handleNavClick(e, '#courses')}
-            >
-              {t.topBar.courses}
-            </a>
-            <a
-              href="#languages"
-              className={styles.navLink}
-              onClick={(e) => handleNavClick(e, '#languages')}
-            >
-              {t.topBar.languages}
-            </a>
-            <a
-              href="#contact"
-              className={styles.navLink}
-              onClick={(e) => handleNavClick(e, '#contact')}
-            >
-              {t.topBar.contact}
-            </a> */}
             <button
               type="button"
               className={styles.languageButton}
