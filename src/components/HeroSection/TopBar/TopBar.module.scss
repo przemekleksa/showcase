@@ -473,8 +473,17 @@
 
 .mobileLanguageThemeContainer {
   display: flex;
+  // flex-direction: column;
+  justify-content: space-between;
+  width: 100dvw;
   gap: 1rem;
   position: fixed;
   bottom: 20px;
-  right: 20px;
+  padding: 0 12px;
+  // right: 20px;
+
+
+  button {
+    min-height: 55px;
+  }
 }
