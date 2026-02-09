@@ -183,7 +183,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
                 rel="noopener noreferrer"
                 className={styles.liveLink}
               >
-                {t.projects.viewLive}
+                {project.liveUrlLabel ? project.liveUrlLabel[language] : t.projects.viewLive}
               </a>
             )}
             {project.appStoreUrl && (

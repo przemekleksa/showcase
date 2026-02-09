@@ -23,6 +23,10 @@ export interface Project {
     pl: string[]
   }
   liveUrl?: string
+  liveUrlLabel?: {
+    en: string
+    pl: string
+  }
   githubUrl?: string
   appStoreUrl?: string
   githubHidden?: boolean
@@ -181,7 +185,11 @@ export const projects: Project[] = [
         'Zaimplementowano program lojalnościowy scan-to-earn dla rachunków na miejscu',
       ],
     },
-    liveUrl: 'https://kitopi.com',
+    liveUrl: 'https://www.kitopi.com/rewardsapp',
+    liveUrlLabel: {
+      en: 'View Presentation',
+      pl: 'Zobacz prezentację',
+    },
     appStoreUrl: 'https://apps.apple.com/us/app/kitopi/id1615524979',
     githubHidden: true,
   },
