@@ -65,10 +65,15 @@
     text-shadow: 0px 0px 0px rgba(255, 255, 255, 1);
     transform: scale(1.05);
   }
-
-
 }
 
+[data-theme='light'] .logoIcon {
+  color: white;
+
+  &:hover {
+    color: #358ed7;
+  }
+}
 
 
 .logoText {
