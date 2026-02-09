@@ -56,6 +56,8 @@
   color: white;
   letter-spacing: -0.5px;
   transition: color 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  ;
 
   &:hover {
     color: #358ed7;
